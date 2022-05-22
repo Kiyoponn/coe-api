@@ -10,10 +10,10 @@ app.get('/', (req, res) => {
     res.sendFile(static + '/index.html');
 });
 
-const characters = require('./routes/characters');
-const character = require('./routes/characters');
-const students = require('./routes/students');
-const teachers = require('./routes/teachers');
+const characters = require('./api/characters');
+const character = require('./api/characters');
+const students = require('./api/students');
+const teachers = require('./api/teachers');
 
 app.use('/api/characters', characters);
 app.use('/api/character', character);
