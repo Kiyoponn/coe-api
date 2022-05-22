@@ -35,13 +35,32 @@
             margin: auto;
             position: absolute;
             padding: 24px 0 16px 0;
-        } hr {
-            border-top: 1px solid #dbdbdb;
-            margin-bottom: 32px;
+            animation: none;
         } span {
+            height: 40px;
+            width: 40px;
             cursor: pointer;
         } span:hover {
-            transform: scale(10%, 10%, 0);
+            animation: pulse 1s infinite;
+        } @keyframes pulse{
+            0% {
+                font-size: 16px;
+            }
+            5% {
+                font-size: 17px;
+            }
+            10% {
+                font-size: 18px;
+            }
+            15% {
+                font-size: 17px;
+            }
+            50% {
+                font-size: 16px;
+            }
+            100% {
+                font-size: 15px;
+            }
         }
     </style>
 </head>
@@ -67,8 +86,7 @@
         </ul>
     </main>
     <footer>
-        <hr>
-        <p>Created with <span>♥</span> by Kiyopon | 2022</p>
+        <p>Created with <span> &#10084; </span> by Kiyopon | 2022</p>
     </footer>
 </body>
 </html>
