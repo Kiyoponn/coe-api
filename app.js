@@ -4,8 +4,12 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 5050;
 
+const dirPath = path.join(__dirname, '/public');
+
+const static = app.use(express.static(dirPath));
+
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '/public/index.html'));
+    res.sendFile(static + '/index.html');
 });
 
 app.use('/api/characters', require('./routes/characters'));
