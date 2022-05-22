@@ -8,7 +8,7 @@ router.get('/', async(req, res) => {
     let data = {};
 
     try {
-        const teachers = await characters.findMany({
+        const getTeachers = await characters.findMany({
             where: {
                 professionalstatus: {
                     is: {
@@ -24,10 +24,10 @@ router.get('/', async(req, res) => {
             }
         });
         
-        if(!teachers)
+        if(!getTeachers)
             data.message = 'Coudn\'t find any teacher data';
         else
-            data.data = data; 
+            data.teachers = getTeachers;
     } catch(e) {
         console.error(e);
         status = 500;

@@ -8,17 +8,17 @@ router.get('/', async(req, res) => {
     let data = {};
 
     try {
-        const chars = await characters.findMany({
+        const getCharacters = await characters.findMany({
             include: {
                 characteristics: true,
                 professionalstatus: true
             }
         });
 
-        if(!chars)
+        if(!getCharacters)
             data.message = 'Couldn\'t find characters'
         else
-            data.data = data;
+            data.characters = getCharacters;
     } catch(e) {
         console.error(e);
         status = 500;
@@ -34,7 +34,7 @@ router.get('/:id', async(req, res) => {
     const { id } = req.params;
 
     try{
-        const char = await characters.findUnique({
+        const getCharacter = await characters.findUnique({
             where: {
                 id: parseInt(id)
             },
@@ -44,11 +44,11 @@ router.get('/:id', async(req, res) => {
             }
         })
         
-        if(!char){
+        if(!getCharacter){
             res.json({message: 'Couldn\'t find that character'});
             return;
         } else {
-            res.json(data);
+            res.json(getCharacter);
         }
     }catch(e) {
         console.error(e);
