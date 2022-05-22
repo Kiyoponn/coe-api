@@ -1,0 +1,41 @@
+generator client {
+    provider        = "prisma-client-js"
+    previewFeatures = ["referentialIntegrity"]
+}
+
+datasource db {
+    provider             = "mysql"
+    url                  = env("DATABASE_URL")
+    referentialIntegrity = "prisma"
+}
+
+model characters {
+    id                 Int                 @id @default(autoincrement())
+    name               String
+    nicknames          String?
+    characteristics    characteristics?
+    professionalstatus professionalstatus?
+    image              String?
+}
+
+model characteristics {
+    id          Int        @id @default(autoincrement())
+    characters  characters @relation(fields: [id], references: [id])
+    gender      String?
+    age         Int?
+    dateOfBirth String?
+    height      Int?
+    hairColor   String?
+    eyeColor    String?
+}
+
+model professionalstatus {
+    id          Int        @id @default(autoincrement())
+    characters  characters @relation(fields: [id], references: [id])
+    studentId   String?
+    class       String?
+    club        String?
+    group       String?
+    occupation  String?
+    affiliation String?
+}

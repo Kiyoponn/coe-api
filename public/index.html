@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classroom of the Elite - API</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            height: 100vh;
+            position: relative;
+        } body * {
+            font-family: 'Roboto', sans-serif;
+        } header {
+            padding: 40px;
+            background-color: #9F003C;
+            color: #ffffff;
+            font-weight: 800;
+        } h1 {
+            font-size: 4rem;
+            text-align: center;
+        } main {
+            width: 1400px;
+            margin: auto;
+            font-size: 1.25rem;
+        } li {
+            margin: 8px 0;
+        } footer {
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            margin: auto;
+            position: absolute;
+            padding: 24px 0 16px 0;
+        } hr {
+            border-top: 1px solid #dbdbdb;
+            margin-bottom: 32px;
+        } span {
+            cursor: pointer;
+        } span:hover {
+            transform: scale(10%, 10%, 0);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Classroom of the Elite - API</h1>
+    </header>
+    <main>
+        <p>Use these routes to request data on characters:</p>
+        <ul>
+            <li>
+                <a href="/characters">/character</a> - view all characters
+            </li>
+            <li>
+                <a href="/characters/1">/character/:id</a> - view characters with the id
+            </li>
+            <li>
+                <a href="/"></a> /characters/students - coming soon...
+            </li>
+            <li>
+                <a href="/"></a> /character/teachers - coming soon...
+            </li>
+        </ul>
+    </main>
+    <footer>
+        <hr>
+        <p>Created with <span>♥</span> by Kiyopon | 2022</p>
+    </footer>
+</body>
+</html>
