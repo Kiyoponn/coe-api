@@ -16,4 +16,4 @@ app.use('/api/students', require('./api/students'));
 
 app.use('/api/teachers', require('./api/teachers'));
 
-app.listen(PORT, () => console.log(`Server is running at port ${PORT}`));
+app.listen(PORT, () => console.log(`Server is up on http://localhost:${PORT}`));
