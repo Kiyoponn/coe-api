@@ -10,8 +10,8 @@
     "start": "node app.js",
     "seed": "node prisma/seed.js"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [ "anime", "api", "classroom of the elite", "classroom", "elite"],
+  "author": "Raju Khattri",
   "license": "ISC",
   "dependencies": {
     "@prisma/client": "^3.5.0",
