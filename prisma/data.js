@@ -45,7 +45,7 @@ const characteristics = [
 
 const professionalstatus = [
     {
-        studentId: 'S01T004738',
+        schoolId: 'S01T004738',
         class: '1-D',
         club: undefined,
         group: 'Ayanokoji Group',
@@ -53,7 +53,7 @@ const professionalstatus = [
         affiliation: 'Advanced Nurturing High School',
     },
     {
-        studentId: 'S01T004461',
+        schoolId: 'S01T004461',
         class: '3-A',
         club: undefined,
         group: 'Student Council',
@@ -61,7 +61,7 @@ const professionalstatus = [
         affiliation: 'Advanced Nurturing High School',
     },
     {
-        studentId: 'S01T004700',
+        schoolId: 'S01T004700',
         class: '1-D',
         club: 'Archery Club',
         group: 'Ayanokoji Group',
