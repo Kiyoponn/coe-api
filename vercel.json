@@ -11,5 +11,11 @@
         "src": "/(.*)",
         "dest": "app.js"
       }
+    ],
+    "rewrites": [
+      {
+          "src": "/api/characters",
+          "dest": "/api/character/:id"
+      }
     ]
 }
