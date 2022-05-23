@@ -1,3 +1,6 @@
+
+
+
 const characters = [
     {
         name: 'Airi Sakura',
