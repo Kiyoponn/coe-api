@@ -1,80 +1,92 @@
+const axios = require("axios");
+const cheerio = require("cheerio");
 
+const getCharacterPage = async () => {
+  const url = "https://you-zitsu.fandom.com/wiki/Category:Characters";
+  const { data } = await axios.get(url);
+  const $ = cheerio.load(data);
+  const categories = $("ul.category-page__members-for-char");
+  const characterPageNames = [];
 
+  for (let i = 0; i < categories.length; i++) {
+    const ul = categories[i];
+    const charactersLIs = $(ul).find("li.category-page__member");
 
-const characters = [
-    {
-        name: 'Airi Sakura',
-        nicknames: 'Shizuku',
-        image: 'images/airi.png',
-    },
-    {
-        name: 'Akane Tachibana',
-        nicknames: undefined,
-        image: 'images/akane.png',
-    },
-    {
-        name: 'Akito Miyake',
-        nicknames: 'Miyatchi',
-        image: 'images/akito.png'
+    for (let j = 0; j < charactersLIs.length; j++) {
+      const li = charactersLIs[j];
+      const path =
+        $(li).find("a.category-page__member-link").attr("href") || "";
+
+      const name = path.replace("/wiki/", "");
+      characterPageNames.push(name);
     }
-]
+  }
 
-const characteristics = [
-    {
-        gender: 'female',
-        age: 16,
-        dateOfBirth: '15-10-2005',
-        height: 153,
-        hairColor: 'pink',
-        eyeColor: 'gradient blue',
-    },
-    {
-        gender: 'female',
-        age: 18,
-        dateOfBirth: '06-05-2003',
-        height: 155,
-        hairColor: 'lilac',
-        eyeColor: 'peach',
-    },
-    {
-        gender: 'male',
-        age: 17,
-        dateOfBirth: '13-07-2004',
-        height: undefined,
-        hairColor: 'dark magenta',
-        eyeColor: undefined,
-    }
-]
+  return characterPageNames;
+};
 
-const professionalstatus = [
-    {
-        schoolId: 'S01T004738',
-        class: '1-D',
-        club: undefined,
-        group: 'Ayanokoji Group',
-        occupation: 'Student',
-        affiliation: 'Advanced Nurturing High School',
-    },
-    {
-        schoolId: 'S01T004461',
-        class: '3-A',
-        club: undefined,
-        group: 'Student Council',
-        occupation: 'Student',
-        affiliation: 'Advanced Nurturing High School',
-    },
-    {
-        schoolId: 'S01T004700',
-        class: '1-D',
-        club: 'Archery Club',
-        group: 'Ayanokoji Group',
-        occupation: 'Student',
-        affiliation: 'Advanced Nurturing High School'
-    },
-]
+const getCharacterInfo = async (characterName) => {
+  const url = "https://you-zitsu.fandom.com/wiki/" + characterName;
+  const { data } = await axios.get(url);
+  const $ = cheerio.load(data);
+
+  let name = $('h2[data-source="name"]').text();
+  if (!name) {
+    name = characterName.replace("_", " ");
+  }
+
+  let nickname = $(
+    'div[data-source="nickname"] > div.pi-data-value.pi-font > span > i > span.t_nihongo_romaji'
+  ).text();
+  if (!nickname) {
+    nickname = undefined;
+  }
+
+  let image = $(
+    'div[data-source="image1"] > div.wds-tab__content.wds-is-current > figure.pi-item.pi-image > a.image.image-thumbnail > img'
+  ).attr("srcset");
+  if (!image) {
+    image = undefined;
+  }
+
+  const characterInfo = {
+    name,
+    nickname,
+    image,
+  };
+
+  return characterInfo;
+};
+
+// const getCharacteristicsInfo = async () => {
+//   const CharacteristicsInfo = {
+//     gender,
+//     age,
+//     dateOfBirth,
+//     height,
+//     hairColor,
+//     eyeColor,
+//   };
+
+//   return CharacteristicsInfo;
+// };
+
+// const getProfessionalInfo = async () => {
+//   const ProfessionalInfo = {
+//     schoolId,
+//     classe,
+//     club,
+//     group,
+//     occupation,
+//     affiliation,
+//   };
+
+//   return ProfessionalInfo;
+// };
 
 module.exports = {
-    characters,
-    characteristics,
-    professionalstatus
-}
+  getCharacterPage,
+  getCharacterInfo,
+  // getCharacteristicsInfo,
+  // getProfessionalInfo,
+};

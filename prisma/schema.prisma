@@ -12,10 +12,10 @@ datasource db {
 model characters {
     id                 Int                 @id @default(autoincrement())
     name               String
-    nicknames          String?
+    nickname           String?
+    image              String?             @db.VarChar(1024)
     characteristics    characteristics?
     professionalstatus professionalstatus?
-    image              String?
 }
 
 model characteristics {
@@ -35,7 +35,7 @@ model professionalstatus {
     id          Int        @id @default(autoincrement())
     characters  characters @relation(fields: [id], references: [id])
     schoolId    String?
-    class       String?
+    classe      String?
     club        String?
     group       String?
     occupation  String?
