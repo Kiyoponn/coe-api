@@ -9,13 +9,20 @@
         body {
             margin: 0;
             padding: 0;
+            width: 100vw;
             box-sizing: border-box;
-            height: 100vh;
             position: relative;
         } body * {
             font-family: 'Roboto', sans-serif;
+        } .container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
         } header {
-            padding: 40px;
+            width: 100%;
+            padding: 40px 0 40px 0;
             background-color: #9F003C;
             color: #ffffff;
             font-weight: 800;
@@ -23,17 +30,15 @@
             font-size: 4rem;
             text-align: center;
         } main {
-            width: 1400px;
+            padding: 0 40px 0 40px;
             margin: auto;
             font-size: 1.25rem;
+            flex-grow: 3;
         } li {
             margin: 8px 0;
         } footer {
-            bottom: 0;
-            width: 100%;
             text-align: center;
             margin: auto;
-            position: absolute;
             padding: 24px 0 16px 0;
         } span {
             cursor: pointer;
@@ -63,28 +68,30 @@
     </style>
 </head>
 <body>
-    <header>
-        <h1>Welcome to the Classroom of the Elite - API</h1>
-    </header>
-    <main>
-        <p>Use these routes to request data on characters:</p>
-        <ul>
-            <li>
-                <a href="/api/characters">/characters</a> - view all the characters
-            </li>
-            <li>
-                <a href="/api/character/1">/character/id</a> - view a character with the id, e.g., /api/charcters/3
-            </li>
-            <li>
-                <a href="/api/students">/api/students</a> - view all the students
-            </li>
-            <li>
-                <a href="/"></a> /api/teachers - view all the teachers (coming soon...)
-            </li>
-        </ul>
-    </main>
-    <footer>
-        <p>Created with <span> ❤️ </span> by <a target="_blank" href="https://github.com/Kiyoponn/coe-api">Kiyopon</a> | 2022</p>
-    </footer>
+    <div class='container'>
+        <header>
+            <h1>Welcome to the Classroom of the Elite - API</h1>
+        </header>
+        <main>
+            <p>Use these routes to request data on characters:</p>
+            <ul>
+                <li>
+                    <a href="/api/characters">/characters</a> - view all the characters
+                </li>
+                <li>
+                    <a href="/api/character/1">/character/id</a> - view a character with the id, e.g., /api/charcters/3
+                </li>
+                <li>
+                    <a href="/api/students">/api/students</a> - view all the students
+                </li>
+                <li>
+                    <a href="/"></a> /api/teachers - view all the teachers (coming soon...)
+                </li>
+            </ul>
+        </main>
+        <footer>
+            <p>Created with <span> ❤️ </span> by <a target="_blank" href="https://github.com/Kiyoponn/coe-api">Kiyopon</a> | 2022</p>
+        </footer>
+    </div>
 </body>
 </html>
